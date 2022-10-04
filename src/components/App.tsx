@@ -1,22 +1,34 @@
 import axios from 'axios'
 import Cardapio from 'Cardapio'
 import Home from 'icons/Home'
+import ListBullet from 'icons/ListBullet'
 import { ReactNode, useEffect, useState } from 'react'
 import Today from './Today'
 
 const routes: Array<{ icon: ReactNode; route: string }> = [
   {
     icon: <Home />,
+    route: 'today'
+  },
+  {
+    icon: <ListBullet />,
     route: 'all'
   }
 ]
-function Navbar() {
+function Navbar({
+  route,
+  setRoute
+}: {
+  route: string
+  setRoute: (route: string) => void
+}) {
   return (
     <div className="grid h-full grid-flow-col gap-4 bg-gray-100 flex align-items-center">
       {routes.map(({ route, icon }, index) => (
         <div key={index}>
           <button
             className={`flex h-full w-full items-center justify-center p-4`}
+            onClick={() => setRoute(route)}
           >
             {icon}
           </button>
@@ -36,10 +48,23 @@ function ListAllCardapios({ cardapios }: { cardapios: Cardapio[] }) {
   )
 }
 
+function CardapioToday({ cardapios }: { cardapios: Cardapio[] }) {
+  const day = new Date().getDay()
+  const cardapio = cardapios[day]
+
+  return (
+    <div className="px-4 pt-4">
+      <Today cardapio={cardapio} />
+    </div>
+  )
+}
+
 function Pages({ route, cardapios }: { route: string; cardapios: Cardapio[] }) {
   switch (route) {
     case 'all':
       return <ListAllCardapios cardapios={cardapios} />
+    case 'today':
+      return <CardapioToday cardapios={cardapios} />
     default:
       return null
   }
@@ -47,6 +72,7 @@ function Pages({ route, cardapios }: { route: string; cardapios: Cardapio[] }) {
 
 function App() {
   const [cardapios, setCardapios] = useState<Cardapio[]>([])
+  const [route, setRoute] = useState('today')
 
   useEffect(() => {
     async function request() {
@@ -61,10 +87,10 @@ function App() {
   return (
     <div className="flex h-screen flex-col">
       <div className="grow overflow-y-scroll">
-        <Pages route={'all'} cardapios={cardapios} />
+        <Pages route={route} cardapios={cardapios} />
       </div>
       <div className="h-12">
-        <Navbar />
+        <Navbar route={route} setRoute={setRoute} />
       </div>
     </div>
   )

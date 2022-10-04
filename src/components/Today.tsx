@@ -1,6 +1,8 @@
 import Cardapio from 'Cardapio'
 
 function Today({ cardapio }: { cardapio: Cardapio }) {
+  if (!cardapio) return null
+
   return (
     <div className="rounded-xl border-2 border-gray-100 p-4 shadow-md">
       <h1 className="text-2xl">{cardapio.dia}</h1>

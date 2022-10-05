@@ -3,6 +3,7 @@ import ArrowDown from 'icons/ArrowDown'
 import CurrencyDollar from 'icons/CurrencyDollar'
 import Card from './Card'
 import TransactionCard from './TransactionCard'
+import { v4 as uuid } from 'uuid'
 
 interface WalletProps {
   handleAddTransaction: (transaction: Transaction) => void
@@ -18,14 +19,16 @@ function Wallet({
   function handleIncreaseCredit() {
     handleAddTransaction({
       amount: 1,
-      date: new Date()
+      date: new Date(),
+      id: uuid()
     })
   }
 
   function handleDecreaseCredit() {
     handleAddTransaction({
       amount: -1,
-      date: new Date()
+      date: new Date(),
+      id: uuid()
     })
   }
 

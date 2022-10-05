@@ -24,7 +24,6 @@ function TransactionCard({
   }
 
   function handleOpenDetails() {
-    console.log('open details')
     setOpen(!open)
   }
 
@@ -44,7 +43,13 @@ function TransactionCard({
           <div className="ml-3">{formatDate(transaction.date)}</div>
         </div>
         <div className={`overflow-hidden ${open ? '' : 'h-0'}`}>
-          xxxxx xxxxx
+          <button
+            type="button"
+            onClick={() => handleRemoveTransaction(transaction)}
+            className="mt-6 mr-2 mb-2 w-full rounded-lg border border-red-700 px-5 py-2.5 text-center text-sm font-medium text-red-700 hover:bg-red-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300"
+          >
+            Remover
+          </button>
         </div>
       </button>
     </div>

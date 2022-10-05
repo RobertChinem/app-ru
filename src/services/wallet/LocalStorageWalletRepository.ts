@@ -18,9 +18,7 @@ class LocalStorageWalletRepository implements IWalletRepository {
   async deleteTransaction(transaction: Transaction): Promise<void> {
     this.load()
     this.transactions = this.transactions.filter(
-      ({ date, amount }) =>
-        date.getTime() !== transaction.date.getTime() &&
-        amount !== transaction.amount
+      ({ id }) => id !== transaction.id
     )
     this.save()
   }
@@ -29,7 +27,8 @@ class LocalStorageWalletRepository implements IWalletRepository {
     this.transactions = []
     const transactions = localStorage.getItem('transactions') || '[]'
     this.transactions = (JSON.parse(transactions) as Transaction[]).map(
-      ({ amount, date }) => ({
+      ({ id, amount, date }) => ({
+        id,
         amount,
         date: new Date(date)
       })

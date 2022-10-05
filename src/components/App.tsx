@@ -28,12 +28,7 @@ function App() {
   }
 
   async function handleRemoveTransaction(transaction: Transaction) {
-    setTransactions(
-      transactions.filter(
-        ({ amount, date }) =>
-          date !== transaction.date && amount !== transaction.amount
-      )
-    )
+    setTransactions(transactions.filter(({ id }) => id !== transaction.id))
     await WalletService.deleteTransaction(transaction)
   }
 

@@ -1,4 +1,5 @@
 interface Transaction {
+  id: string
   date: Date
   amount: number
 }

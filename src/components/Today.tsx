@@ -8,9 +8,9 @@ function Today({ cardapio }: { cardapio: Cardapio }) {
   return (
     <div className="rounded-xl border p-4">
       <h1 className="text-2xl">{cardapio.dia}</h1>
-      <div className="mt-8 grid grid-cols-1 gap-4">
-        <div className="rounded-xl p-4 shadow-md">
-          <div className="mb-4 flex w-full items-center rounded-lg bg-white">
+      <div className="mt-4 grid grid-cols-1 gap-4">
+        <div className="rounded-xl bg-amber-100/20 p-4 shadow-md shadow-amber-200">
+          <div className="mb-4 flex w-full items-center rounded-lg">
             <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-500">
               <Sun />
             </div>
@@ -39,8 +39,8 @@ function Today({ cardapio }: { cardapio: Cardapio }) {
             </div>
           </div>
         </div>
-        <div className="rounded-xl p-4 shadow-md">
-          <div className="mb-4 flex w-full items-center rounded-lg bg-white">
+        <div className="rounded-xl bg-blue-100/20 p-4 shadow-md shadow-blue-200">
+          <div className="mb-4 flex w-full items-center rounded-lg">
             <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-200 text-blue-800">
               <Moon />
             </div>

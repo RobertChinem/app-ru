@@ -1,5 +1,6 @@
 import Home from 'icons/Home'
 import ListBullet from 'icons/ListBullet'
+import WalletIcon from 'icons/Wallet'
 import { ReactNode } from 'react'
 
 const routes: Array<{ icon: ReactNode; route: string }> = [
@@ -10,6 +11,10 @@ const routes: Array<{ icon: ReactNode; route: string }> = [
   {
     icon: <ListBullet />,
     route: 'all'
+  },
+  {
+    icon: <WalletIcon />,
+    route: 'wallet'
   }
 ]
 function Navbar({

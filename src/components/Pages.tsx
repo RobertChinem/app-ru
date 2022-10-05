@@ -2,6 +2,7 @@ import Cardapio from 'entities/Cardapio'
 import Transaction from 'entities/Transaction'
 import CardapioToday from './CardapioToday'
 import ListAllCardapios from './ListAllCardapios'
+import Meet from './Meet'
 import Wallet from './Wallet'
 
 interface PagesProps {
@@ -32,6 +33,8 @@ function Pages({
           transactions={transactions}
         />
       )
+    case 'meet':
+      return <Meet />
     default:
       return null
   }

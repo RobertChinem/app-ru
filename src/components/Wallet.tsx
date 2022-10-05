@@ -1,48 +1,9 @@
 import ArrowDown from 'icons/ArrowDown'
-import ArrowUp from 'icons/ArrowUp'
 import CurrencyDollar from 'icons/CurrencyDollar'
 import { useState } from 'react'
-
-interface Transaction {
-  date: Date
-  amount: number
-}
-
-function Card({ balance }: { balance: number }) {
-  return (
-    <div className="h-44 w-80 rounded-xl bg-lime-400 p-4 shadow-xl shadow-lime-200">
-      <h1 className="text-2xl font-medium">Saldo {balance} créditos</h1>
-    </div>
-  )
-}
-
-function Transaction({ transaction }: { transaction: Transaction }) {
-  function formatDate(date: Date) {
-    return new Intl.DateTimeFormat('pt-BR', {
-      day: '2-digit',
-      month: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date)
-  }
-
-  return (
-    <div className="py-2">
-      <div className="flex w-full items-center rounded-lg">
-        {transaction.amount > 0 ? (
-          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-200 text-green-800">
-            <ArrowUp />
-          </div>
-        ) : (
-          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-200 text-red-800">
-            <ArrowDown />
-          </div>
-        )}
-        <div className="ml-3">{formatDate(transaction.date)}</div>
-      </div>
-    </div>
-  )
-}
+import Transaction from 'Transaction'
+import Card from './Card'
+import TransactionCard from './TransactionCard'
 
 function Wallet() {
   const [transactions, setTransactions] = useState<Transaction[]>([])
@@ -97,7 +58,7 @@ function Wallet() {
           .slice()
           .reverse()
           .map((transaction, index) => (
-            <Transaction key={index} transaction={transaction} />
+            <TransactionCard key={index} transaction={transaction} />
           ))}
       </div>
     </div>

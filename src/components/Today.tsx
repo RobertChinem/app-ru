@@ -7,7 +7,7 @@ function Today({ cardapio }: { cardapio: Cardapio }) {
 
   return (
     <div className="rounded-xl border p-4">
-      <h1 className="text-2xl">{cardapio.dia}</h1>
+      <h1 className="text-3xl font-bold">{cardapio.dia}</h1>
       <div className="mt-4 grid grid-cols-1 gap-4">
         <div className="rounded-xl bg-amber-100/20 p-4 shadow-md shadow-amber-200">
           <div className="mb-4 flex w-full items-center rounded-lg">

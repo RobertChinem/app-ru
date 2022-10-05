@@ -22,12 +22,15 @@ function Navbar({
   route: string
   setRoute: (route: string) => void
 }) {
+  const currentRoute = route
   return (
-    <div className="grid h-full grid-flow-col gap-4 bg-gray-100 flex align-items-center">
+    <div className="grid h-full grid-flow-col gap-4 bg-gray-100">
       {routes.map(({ route, icon }, index) => (
         <div key={index}>
           <button
-            className={`flex h-full w-full items-center justify-center p-4`}
+            className={`flex h-full w-full items-center justify-center p-4 ${
+              currentRoute !== route ? 'text-gray-400' : ''
+            }`}
             onClick={() => setRoute(route)}
           >
             {icon}
@@ -89,7 +92,7 @@ function App() {
       <div className="grow overflow-y-scroll">
         <Pages route={route} cardapios={cardapios} />
       </div>
-      <div className="h-12">
+      <div>
         <Navbar route={route} setRoute={setRoute} />
       </div>
     </div>

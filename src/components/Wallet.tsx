@@ -93,9 +93,12 @@ function Wallet() {
       </div>
       <h2 className="mt-8 text-xl font-bold">Transações Recentes</h2>
       <div className="divide-y divide-gray-200">
-        {transactions.map((transaction, index) => (
-          <Transaction key={index} transaction={transaction} />
-        ))}
+        {transactions
+          .slice()
+          .reverse()
+          .map((transaction, index) => (
+            <Transaction key={index} transaction={transaction} />
+          ))}
       </div>
     </div>
   )

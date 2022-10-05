@@ -1,31 +1,32 @@
 import Transaction from 'entities/Transaction'
 import ArrowDown from 'icons/ArrowDown'
 import CurrencyDollar from 'icons/CurrencyDollar'
-import { useState } from 'react'
 import Card from './Card'
 import TransactionCard from './TransactionCard'
 
-function Wallet() {
-  const [transactions, setTransactions] = useState<Transaction[]>([])
+interface WalletProps {
+  handleAddTransaction: (transaction: Transaction) => void
+  handleRemoveTransaction: (transaction: Transaction) => void
+  transactions: Transaction[]
+}
 
+function Wallet({
+  transactions,
+  handleAddTransaction,
+  handleRemoveTransaction
+}: WalletProps) {
   function handleIncreaseCredit() {
-    setTransactions([
-      ...transactions,
-      {
-        date: new Date(),
-        amount: 1
-      }
-    ])
+    handleAddTransaction({
+      amount: 1,
+      date: new Date()
+    })
   }
 
   function handleDecreaseCredit() {
-    setTransactions([
-      ...transactions,
-      {
-        date: new Date(),
-        amount: -1
-      }
-    ])
+    handleAddTransaction({
+      amount: -1,
+      date: new Date()
+    })
   }
 
   const balance = transactions.reduce((acc, { amount }) => acc + amount, 0)
@@ -58,7 +59,11 @@ function Wallet() {
           .slice()
           .reverse()
           .map((transaction, index) => (
-            <TransactionCard key={index} transaction={transaction} />
+            <TransactionCard
+              key={index}
+              handleRemoveTransaction={handleRemoveTransaction}
+              transaction={transaction}
+            />
           ))}
       </div>
     </div>

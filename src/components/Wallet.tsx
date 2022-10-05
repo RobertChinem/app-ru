@@ -1,7 +1,6 @@
 import ArrowDown from 'icons/ArrowDown'
 import ArrowUp from 'icons/ArrowUp'
 import CurrencyDollar from 'icons/CurrencyDollar'
-import Moon from 'icons/Moon'
 import { useState } from 'react'
 
 interface Transaction {

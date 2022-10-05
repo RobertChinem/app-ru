@@ -1,4 +1,4 @@
-import Cardapio from 'Cardapio'
+import Cardapio from 'entities/Cardapio'
 import CardapioToday from './CardapioToday'
 import ListAllCardapios from './ListAllCardapios'
 import Wallet from './Wallet'

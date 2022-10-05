@@ -1,4 +1,4 @@
-import Cardapio from 'Cardapio'
+import Cardapio from 'entities/Cardapio'
 import Moon from 'icons/Moon'
 import Sun from 'icons/Sun'
 

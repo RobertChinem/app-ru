@@ -1,4 +1,4 @@
-import Cardapio from 'Cardapio'
+import Cardapio from 'entities/Cardapio'
 import Today from './Today'
 
 function ListAllCardapios({ cardapios }: { cardapios: Cardapio[] }) {

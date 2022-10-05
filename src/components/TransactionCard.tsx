@@ -1,6 +1,6 @@
+import Transaction from 'entities/Transaction'
 import ArrowDown from 'icons/ArrowDown'
 import ArrowUp from 'icons/ArrowUp'
-import Transaction from 'Transaction'
 
 function TransactionCard({ transaction }: { transaction: Transaction }) {
   function formatDate(date: Date) {

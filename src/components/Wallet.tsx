@@ -1,7 +1,7 @@
+import Transaction from 'entities/Transaction'
 import ArrowDown from 'icons/ArrowDown'
 import CurrencyDollar from 'icons/CurrencyDollar'
 import { useState } from 'react'
-import Transaction from 'Transaction'
 import Card from './Card'
 import TransactionCard from './TransactionCard'
 

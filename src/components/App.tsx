@@ -1,5 +1,5 @@
 import axios from 'axios'
-import Cardapio from 'Cardapio'
+import Cardapio from 'entities/Cardapio'
 import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import Pages from './Pages'

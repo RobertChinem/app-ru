@@ -15,10 +15,13 @@ class LocalSave {
     if (caches) {
       const cache = await caches.open(`${LocalSave.CACHE_NAME}/${key}`)
       const response = await cache.match(LocalSave.CACHE_ENDPOINT)
+
       if (!response) {
         return ''
       }
-      return await response.text()
+      const text = await response.text()
+      console.log('response', text)
+      return text
     } else {
       return localStorage.getItem(key) || ''
     }

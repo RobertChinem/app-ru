@@ -1,13 +1,24 @@
 import Cardapio from 'entities/Cardapio'
 import Moon from 'icons/Moon'
 import Sun from 'icons/Sun'
+import { useState } from 'react'
+import LocalSave from 'services/LocalSave'
+import { useEffect } from 'react'
 
 function Today({ cardapio }: { cardapio: Cardapio }) {
+  const [data, setData] = useState('none')
+  useEffect(() => {
+    async function f() {
+      setData(await LocalSave.load('meet:groupId'))
+    }
+    f()
+  }, [])
+
   if (!cardapio) return null
 
   return (
     <div className="rounded-xl border p-4">
-      {caches ? <p>Cache is available</p> : <p>Cache is not available</p>}
+      <p>{data}</p>
       <h1 className="text-3xl font-bold">{cardapio.dia}</h1>
       <div className="mt-4 grid grid-cols-1 gap-4">
         <div className="rounded-xl bg-amber-100/20 p-4 shadow-md shadow-amber-200">

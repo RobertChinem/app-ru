@@ -1,6 +1,11 @@
 {
-    "name": "RU",
-    "short_name": "RU",
-    "description": "Cardápio RU UFABC",
-    "theme_color": "#297522"
-  }
+  "name": "RU",
+  "short_name": "RU",
+  "description": "Cardápio RU UFABC",
+  "theme_color": "#297522",
+  "url_handlers": [
+    {
+      "origin": "https://ru-app.herokuapp.com/"
+    }
+  ]
+}

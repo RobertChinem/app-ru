@@ -13,7 +13,7 @@ export default defineConfig({
       manifest,
       includeAssets: ['favicon.svg'],
       devOptions: {
-        enabled: false
+        enabled: true
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}']

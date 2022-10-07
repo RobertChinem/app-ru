@@ -1,6 +1,7 @@
 {
   "root": "build/",
   "routes": {
+    "/.well-known/web-app-origin-association": "/https://ru-app.herokuapp.com/assets/.well-known/web-app-origin-association",
     "/**": "index.html"
   },
   "https_only": true,

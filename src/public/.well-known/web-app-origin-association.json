@@ -1,0 +1,12 @@
+{
+    "web_apps": [
+        {
+            "manifest": "https://ru-app.herokuapp.com/manifest.webmanifest",
+            "details": {
+                "paths": [
+                    "/*"
+                ]
+            }
+        }
+    ]
+}

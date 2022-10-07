@@ -16,8 +16,10 @@ export default defineConfig({
         enabled: false
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}']
-      }
+        globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}'],
+        cleanupOutdatedCaches: false
+      },
+      registerType: 'autoUpdate'
     })
   ],
   build: {

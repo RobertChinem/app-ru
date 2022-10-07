@@ -5,7 +5,7 @@
   "theme_color": "#297522",
   "url_handlers": [
     {
-      "origin": "https://ru-app.herokuapp.com/"
+      "origin": "https://ru-app.herokuapp.com"
     }
   ]
 }

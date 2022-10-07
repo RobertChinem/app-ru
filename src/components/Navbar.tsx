@@ -1,6 +1,6 @@
 import Home from 'icons/Home'
 import ListBullet from 'icons/ListBullet'
-import UserGroup from 'icons/UserGroup'
+import Sun from 'icons/Sun'
 import WalletIcon from 'icons/Wallet'
 import { ReactNode } from 'react'
 
@@ -18,7 +18,7 @@ const routes: Array<{ icon: ReactNode; route: string }> = [
     route: 'wallet'
   },
   {
-    icon: <UserGroup />,
+    icon: <Sun />,
     route: 'meet'
   }
 ]

@@ -6,9 +6,7 @@ class LocalSave {
     if (caches) {
       const cache = await caches.open(`${LocalSave.CACHE_NAME}/${key}`)
       await cache.put(LocalSave.CACHE_ENDPOINT, new Response(value))
-      alert('cache is available')
     } else {
-      alert('cache is not available')
       localStorage.setItem(key, value)
     }
   }
@@ -20,10 +18,8 @@ class LocalSave {
       if (!response) {
         return ''
       }
-      alert('cache is available')
       return await response.text()
     } else {
-      alert('cache is not available')
       return localStorage.getItem(key) || ''
     }
   }
@@ -32,9 +28,7 @@ class LocalSave {
     if (caches) {
       const cache = await caches.open(`${LocalSave.CACHE_NAME}/${key}`)
       await cache.delete(LocalSave.CACHE_ENDPOINT)
-      alert('cache is available')
     } else {
-      alert('cache is not available')
       localStorage.removeItem(key)
     }
   }

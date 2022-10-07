@@ -1,5 +1,7 @@
+import { useMeet } from 'contexts/useMeet'
 import Cardapio from 'entities/Cardapio'
 import Transaction from 'entities/Transaction'
+import { useEffect } from 'react'
 import CardapioToday from './CardapioToday'
 import ListAllCardapios from './ListAllCardapios'
 import Meet from './Meet'
@@ -20,6 +22,21 @@ function Pages({
   handleRemoveTransaction,
   transactions
 }: PagesProps) {
+  const { joinGroup } = useMeet()
+
+  useEffect(() => {
+    async function handleJoinGroup() {
+      const searchParams = new URLSearchParams(window.location.search)
+      const groupId = searchParams.get('groupId')
+      if (groupId) {
+        localStorage.setItem('meet:groupId', groupId)
+        await joinGroup(groupId)
+        window.location.href = '/'
+      }
+    }
+    handleJoinGroup()
+  }, [joinGroup])
+
   switch (route) {
     case 'all':
       return <ListAllCardapios cardapios={cardapios} />

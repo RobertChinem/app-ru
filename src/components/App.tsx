@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { MeetProvider } from 'contexts/useMeet'
 import Cardapio from 'entities/Cardapio'
 import Transaction from 'entities/Transaction'
 import { useEffect, useState } from 'react'
@@ -8,7 +9,7 @@ import Pages from './Pages'
 
 function App() {
   const [cardapios, setCardapios] = useState<Cardapio[]>([])
-  const [route, setRoute] = useState('today')
+  const [route, setRoute] = useState('meet')
   const [transactions, setTransactions] = useState<Transaction[]>([])
 
   useEffect(() => {
@@ -33,20 +34,22 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen flex-col">
-      <div className="grow overflow-y-scroll">
-        <Pages
-          handleAddTransaction={handleAddTransaction}
-          handleRemoveTransaction={handleRemoveTransaction}
-          transactions={transactions}
-          route={route}
-          cardapios={cardapios}
-        />
+    <MeetProvider>
+      <div className="flex h-screen flex-col">
+        <div className="grow overflow-y-scroll">
+          <Pages
+            handleAddTransaction={handleAddTransaction}
+            handleRemoveTransaction={handleRemoveTransaction}
+            transactions={transactions}
+            route={route}
+            cardapios={cardapios}
+          />
+        </div>
+        <div>
+          <Navbar route={route} setRoute={setRoute} />
+        </div>
       </div>
-      <div>
-        <Navbar route={route} setRoute={setRoute} />
-      </div>
-    </div>
+    </MeetProvider>
   )
 }
 

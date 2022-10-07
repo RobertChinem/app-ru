@@ -5,7 +5,6 @@ import {
   useEffect,
   useState
 } from 'react'
-import LocalSave from 'services/LocalSave'
 import Book from 'services/meet/Book'
 import BookService from 'services/meet/BookService'
 import Group from 'services/meet/Group'
@@ -34,7 +33,7 @@ export function MeetProvider({ children }: MeetProviderProps) {
 
   useEffect(() => {
     async function loadGroup() {
-      const groupId = await LocalSave.load('meet:groupId')
+      const groupId = localStorage.getItem('meet:groupId')
       if (groupId) {
         await joinGroup(groupId)
       }
@@ -58,7 +57,7 @@ export function MeetProvider({ children }: MeetProviderProps) {
 
   async function createGroup() {
     const group = await GroupService.create()
-    LocalSave.save('meet:groupId', group.id)
+    localStorage.setItem('meet:groupId', group.id)
     setGroup(group)
   }
 
@@ -101,7 +100,7 @@ export function MeetProvider({ children }: MeetProviderProps) {
   }
 
   function leaveGroup() {
-    LocalSave.clear('meet:groupId')
+    localStorage.removeItem('meet:groupId')
     setGroup(null)
     setBooks([])
   }

@@ -1,32 +1,31 @@
 import Transaction from 'entities/Transaction'
-import LocalSave from 'services/LocalSave'
 import IWalletRepository from './IWalletRepository'
 
 class LocalStorageWalletRepository implements IWalletRepository {
   private transactions: Transaction[] = []
 
   async getTransactions(): Promise<Transaction[]> {
-    await this.load()
+    this.load()
     return this.transactions
   }
 
   async saveTransaction(transaction: Transaction): Promise<void> {
-    await this.load()
+    this.load()
     this.transactions.push(transaction)
     this.save()
   }
 
   async deleteTransaction(transaction: Transaction): Promise<void> {
-    await this.load()
+    this.load()
     this.transactions = this.transactions.filter(
       ({ id }) => id !== transaction.id
     )
     this.save()
   }
 
-  private async load() {
+  private load() {
     this.transactions = []
-    const transactions = (await LocalSave.load('transactions')) || '[]'
+    const transactions = localStorage.getItem('transactions') || '[]'
     this.transactions = (JSON.parse(transactions) as Transaction[]).map(
       ({ id, amount, date }) => ({
         id,
@@ -36,8 +35,8 @@ class LocalStorageWalletRepository implements IWalletRepository {
     )
   }
 
-  private async save() {
-    await LocalSave.save('transactions', JSON.stringify(this.transactions))
+  private save() {
+    localStorage.setItem('transactions', JSON.stringify(this.transactions))
   }
 }
 
